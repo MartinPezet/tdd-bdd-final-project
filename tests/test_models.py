@@ -191,6 +191,19 @@ class TestProductModel(unittest.TestCase):
         for product in dbProductPrices:
             self.assertEqual(product.price, price)
 
+    def test_find_product_by_price_when_given_string(self):
+        """It should Find a product by a string of the price"""
+        products = ProductFactory.create_batch(10)
+        for product in products:
+            product.create()
+        price = products[0].price
+        productPrices = len([product for product in products if product.price == price])
+        dbProductPrices = Product.find_by_price(str(price))
+        self.assertEqual(dbProductPrices.count(), productPrices)
+        for product in dbProductPrices:
+            self.assertEqual(product.price, price)
+
+
     def test_find_product_by_category(self):
         """It should Find a product by the category"""
         products = ProductFactory.create_batch(10)
