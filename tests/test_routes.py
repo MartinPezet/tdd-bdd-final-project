@@ -201,8 +201,10 @@ class TestProductRoutes(TestCase):
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         data = response.get_json()
         self.assertIsNone(data)
-        # Fix with list all and assert to length 1
-        # self.assertEqual()
+        response = self.client.get(BASE_URL)
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        data = response.get_json()
+        self.assertEqual(len(data), 1)
 
     def test_delete_incorrect_product(self):
         """It should error when requesting to delete an invalid product id"""

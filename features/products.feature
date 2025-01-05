@@ -105,12 +105,12 @@ Scenario: List all Products
 Scenario: Search for Products by Category
     When I visit the "Home Page"
     And I press the "Clear" button
-    And I select "Food" in the "Category" dropdown
+    And I select "Cloths" in the "Category" dropdown
     And I press the "Search" button
     Then I should see the message "Success"
-    And I should see "Big Mac" in the results
-    And I should not see "Hat" in the results
-    And I should not see "Shoes" in the results
+    And I should see "Hat" in the results
+    And I should see "Shoes" in the results
+    And I should not see "Big Mac" in the results
     And I should not see "Sheets" in the results
 
 Scenario: Search for Products by Availability
@@ -126,8 +126,8 @@ Scenario: Search for Products by Availability
 
 Scenario: Search for Products by Name
     When I visit the "Home Page"
-    And I set the "Name" to "Hat"
+    And I set the "Name" to "Shoes"
     And I press the "Search" button
     Then I should see the message "Success"
-    And I should see "Hat" in the "Name" field
-    And I should see "A red fedora" in the "Description" field
+    And I should see "Shoes" in the "Name" field
+    And I should see "Blue shoes" in the "Description" field
